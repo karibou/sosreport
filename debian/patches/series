@@ -1,0 +1,5 @@
+use_input_method_from_python_six.patch
+do_not_collect_isos_in_cobbler_plugin.patch
+collect-cloud-init-log.patch
+fix-command-not-found.patch
+get-interfaces.d.patch

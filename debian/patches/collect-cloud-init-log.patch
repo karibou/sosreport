@@ -1,0 +1,16 @@
+Add collection of /var/log/cloud-init.log
+ and /var/log/cloud-init-output.log if they exist.
+    
+Author: Louis Bouchard <louis.bouchard@canonical.com>
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/1301819
+Origin: upstream, https://github.com/sosreport/sos/commit/36efd32ab01df2c076c3271543d674a515094375
+--- a/sos/plugins/logs.py
++++ b/sos/plugins/logs.py
+@@ -36,6 +36,7 @@
+ 
+         self.limit = self.get_option("logsize")
+         self.add_copy_spec_limit("/var/log/boot*", sizelimit = self.limit)
++        self.add_copy_spec_limit("/var/log/cloud-init*", sizelimit = self.limit)
+ 
+         if self.get_option('all_logs'):
+             logs = self.do_regex_find_all("^\S+\s+(-?\/.*$)\s+",
