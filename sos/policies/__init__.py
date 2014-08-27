@@ -18,6 +18,11 @@ from sos import _sos as _
 import hashlib
 from textwrap import fill
 from six import print_
+try:
+    input = raw_input
+except NameError:
+    pass
+
 
 def import_policy(name):
     policy_fqname = "sos.policies.%s" % name
@@ -383,9 +388,9 @@ class LinuxPolicy(Policy):
 
         if not self.commons['cmdlineopts'].batch and not self.commons['cmdlineopts'].quiet:
             try:
-                self.report_name = raw_input(_("Please enter your first initial and last name [%s]: ") % localname)
+                self.report_name = input(_("Please enter your first initial and last name [%s]: ") % localname)
 
-                self.ticket_number = raw_input(_("Please enter the case number that you are generating this report for: "))
+                self.ticket_number = input(_("Please enter the case number that you are generating this report for: "))
                 self._print()
             except:
                 self._print()
