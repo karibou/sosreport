@@ -924,7 +924,7 @@ class SoSReport(object):
             msg = self.policy.get_msg()
             msg += _("Press ENTER to continue, or CTRL-C to quit.\n")
             try:
-                raw_input(msg)
+                input(msg)
             except:
                 self.ui_log.info("")
                 self._exit()

@@ -83,4 +83,4 @@ po: clean
 	cp $(PO_DIR)/sos_en.properties $(PO_DIR)/sos.properties
 
 test:
-	nosetests -v --with-cover --cover-package=sos --cover-html
+	nosetests3 -v --with-cover --cover-package=sos --cover-html
