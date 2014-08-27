@@ -1,5 +1,10 @@
+From 4263b493459c59b0a7a886a640d87ceace3c052b Mon Sep 17 00:00:00 2001
+From: Louis Bouchard <louis.bouchard@canonical.com>
+Date: Wed, 27 Aug 2014 15:00:58 +0200
+Subject: fix-command-not-found
+
 Fix verbose file logging
-     
+
     Prior versions of sos enable debug logging to the embedded log
     file (sos_logs/sos.log) when a single '-v' is given. Restore this
     behaviour and ensure that command-not-found messages are reported
@@ -8,9 +13,16 @@ Fix verbose file logging
 Author: Bryn M. Reeves <bmr@redhat.com>
 Bug-Ubuntu: https://bugs.launchpad.net/bugs/1303745
 Origin: upstream, https://github.com/sosreport/sos/commit/commit 0338a955a930286beaa7b66c5167be9b15d34d78
+---
+ sos/plugins/__init__.py | 2 +-
+ sos/sosreport.py        | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/sos/plugins/__init__.py b/sos/plugins/__init__.py
+index 7c63631..8df430d 100644
 --- a/sos/plugins/__init__.py
 +++ b/sos/plugins/__init__.py
-@@ -488,7 +488,7 @@
+@@ -488,7 +488,7 @@ class Plugin(object):
              self.soslog.warning("command '%s' timed out after %ds"
                      % (prog, timeout))
          if status == 127:
@@ -19,9 +31,11 @@ Origin: upstream, https://github.com/sosreport/sos/commit/commit 0338a955a930286
          return (status, output, runtime)
  
      def call_ext_prog(self, prog, timeout=300):
+diff --git a/sos/sosreport.py b/sos/sosreport.py
+index 073b28a..a1b4fe0 100644
 --- a/sos/sosreport.py
 +++ b/sos/sosreport.py
-@@ -659,6 +659,7 @@
+@@ -659,6 +659,7 @@ class SoSReport(object):
                  flog.setLevel(logging.DEBUG)
              elif self.opts.verbosity and self.opts.verbosity > 0:
                  console.setLevel(logging.INFO)

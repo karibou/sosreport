@@ -1,15 +1,26 @@
+From 9d84259812d10ca52bdba6400376f77f0057e175 Mon Sep 17 00:00:00 2001
+From: Louis Bouchard <louis.bouchard@canonical.com>
+Date: Wed, 27 Aug 2014 15:00:59 +0200
+Subject: get-interfaces.d
+
 Add collection of /etc/network/interfaces.d for Ubuntu
-     
-    Since 14.04 Trusty, ubuntu uses config scripts in 
+
+    Since 14.04 Trusty, ubuntu uses config scripts in
     /etc/network/interfaces.d. Collect those.
     Closes: #264
-    
+
 Author: Louis Bouchard <louis.bouchard@canonical.com>
 Bug-Ubuntu: https://bugs.launchpad.net/bugs/1303723
 Origin: upstream, https://github.com/sosreport/sos/commit/f4dc6422e3008ae7ba060a0d469284dff5c5daad
+---
+ sos/plugins/networking.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/sos/plugins/networking.py b/sos/plugins/networking.py
+index 598d375..d33a45c 100644
 --- a/sos/plugins/networking.py
 +++ b/sos/plugins/networking.py
-@@ -145,6 +145,7 @@
+@@ -145,6 +145,7 @@ class UbuntuNetworking(Networking, UbuntuPlugin):
          self.add_copy_specs([
              "/etc/resolvconf",
              "/etc/network/interfaces",
