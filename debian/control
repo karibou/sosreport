@@ -3,7 +3,7 @@ Maintainer: Adam Stokes <adam.stokes@ubuntu.com>
 Section: admin
 Priority: optional
 Standards-Version: 3.9.5
-Build-Depends: debhelper (>= 9), dh-python, python3-all, gettext, python3-nose, python3-six
+Build-Depends: debhelper (>= 9), python3-all, gettext, python3-nose, python3-six
 Homepage: https://github.com/sosreport/sosreport
 X-Python3-Version: >= 3.3
 
