@@ -4,9 +4,11 @@ import tempfile
 
 # PYCOMPAT
 import six
-if six.PY2:
-    from StringIO import StringIO
-else:
+
+try:
+    if six.PY2:
+        from StringIO import StringIO
+except AttributeError:
     from io import StringIO
 
 from sos.plugins import Plugin, regex_findall, sos_relative_path, mangle_command

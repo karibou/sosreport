@@ -53,7 +53,7 @@ from sos.reporting import Report, Section, Command, CopiedFile, CreatedFile, Ale
 
 # PYCOMPAT
 import six
-from six.moves import zip, input
+from six.moves import zip
 if six.PY3:
     from configparser import ConfigParser
 else:

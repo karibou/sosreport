@@ -1,4 +1,4 @@
-From 9d84259812d10ca52bdba6400376f77f0057e175 Mon Sep 17 00:00:00 2001
+From d8cdeb7884f82678ef1574f3b4fb4dc2dbb1fdef Mon Sep 17 00:00:00 2001
 From: Louis Bouchard <louis.bouchard@canonical.com>
 Date: Wed, 27 Aug 2014 15:00:59 +0200
 Subject: get-interfaces.d

@@ -18,9 +18,6 @@
 
 from sos.plugins import Plugin, RedHatPlugin, os
 
-# Just for completeness sake.
-from six.moves import input
-
 class Emc(Plugin, RedHatPlugin):
     """EMC related information (PowerPath, Solutions Enabler CLI and Navisphere CLI)
     """

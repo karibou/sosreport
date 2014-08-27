@@ -18,7 +18,11 @@ from sos import _sos as _
 import hashlib
 from textwrap import fill
 from six import print_
-from six.moves import input
+try:
+    input = raw_input
+except NameError:
+    pass
+
 
 def import_policy(name):
     policy_fqname = "sos.policies.%s" % name
@@ -407,6 +411,6 @@ class LinuxPolicy(Policy):
 
         if (self.report_name == ""):
             self.report_name = "default"
-
+        
         return
 
