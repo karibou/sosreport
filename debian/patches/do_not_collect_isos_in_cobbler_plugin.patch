@@ -1,0 +1,14 @@
+Do not collect isos in cobbler plugin
+ In Ubuntu isos are being added to the tarball, do not do that.
+
+Author: Adam Stokes <adam.stokes@ubuntu.com>
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/1302837
+Origin: upstream, https://github.com/sosreport/sos/commit/3ff674035d8962bf3ca3320900fccc6619af7a3d.patch
+
+--- a/sos/plugins/cobbler.py
++++ b/sos/plugins/cobbler.py
+@@ -39,3 +39,4 @@ class DebianCobbler(Cobbler, DebianPlugi
+         self.add_copy_spec("/etc/cobbler")
+         self.add_copy_spec("/var/log/cobbler")
+         self.add_copy_spec("/var/lib/cobbler")
++        self.add_forbidden_path("/var/lib/cobbler/isos")
