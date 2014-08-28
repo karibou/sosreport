@@ -3,3 +3,4 @@
 0003-collect-cloud-init-log.patch
 0004-fix-command-not-found.patch
 0005-get-interfaces.d.patch
+0006-Description-Fix-ceilometer-stack.patch
