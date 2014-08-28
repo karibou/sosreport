@@ -27,7 +27,10 @@ class OpenStackCeilometer(plugins.Plugin):
 
     def setup(self):
         # Ceilometer
-        self.add_copy_spec("/etc/ceilometer/", "/var/log/ceilometer")
+        self.add_copy_specs([
+            "/etc/ceilometer/",
+            "/var/log/ceilometer"
+        ])
 
 class DebianOpenStackCeilometer(OpenStackCeilometer, plugins.DebianPlugin, plugins.UbuntuPlugin):
     """OpenStackCeilometer related information for Debian based distributions."""

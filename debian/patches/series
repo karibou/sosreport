@@ -3,3 +3,7 @@
 0003-fix-command-not-found.patch
 0004-get-interfaces.d.patch
 0005-fix-pysix-issue-for-precise.patch
+0006-Add-rabbitmq-log-collection.patch
+0007-Collect-upstart-logs.patch
+0008-Collect-squid-deb-proxy-info.patch
+0009-fix-ceilometer-stack.patch
