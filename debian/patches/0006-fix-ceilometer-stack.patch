@@ -1,7 +1,9 @@
-From ce2dcdbf0692a061fe306ee87035a89f4dc75b32 Mon Sep 17 00:00:00 2001
+From 0658bed2828fee926bbb23c257d0f351aa3014dc Mon Sep 17 00:00:00 2001
 From: Louis Bouchard <louis.bouchard@canonical.com>
 Date: Thu, 28 Aug 2014 10:06:31 +0200
 Subject: fix ceilometer stack
+
+Description: fix ceilometer stack
 
 Remove error in execution of the ceilometer plugin
 
