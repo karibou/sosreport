@@ -1,3 +1,20 @@
+sosreport (3.1-1ubuntu3) utopic; urgency=medium
+
+  * debian/patches/add-rabbitmq-plugin.patch
+   - Add rabbitmq log collection (LP: #1308232)
+
+  * debian/patches/collect_upstart_log.patch
+    - Collect upstart log files (LP: #1309679)
+
+  * debian/patches/collect-squid-deb-proxy-info.patch
+    - Collect squid-deb-proxy info (LP: #1311131)
+
+  * debian/patches/fix-ceilometer-stack.patch
+    - Remove error in execution of the ceilometer plugin
+    (LP: #1355279)
+
+ -- Louis Bouchard <louis.bouchard@ubuntu.com>  Thu, 28 Aug 2014 10:53:42 +0200
+
 sosreport (3.1-1ubuntu2) trusty; urgency=medium
 
   * Fix spurious "command not found" messages when running (LP: #1303745)
