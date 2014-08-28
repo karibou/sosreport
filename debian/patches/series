@@ -3,4 +3,7 @@
 0003-collect-cloud-init-log.patch
 0004-fix-command-not-found.patch
 0005-get-interfaces.d.patch
-0006-fix-ceilometer-stack.patch
+0006-Add-rabbitmq-log-collection.patch
+0007-Collect-upstart-logs.patch
+0008-Collect-squid-deb-proxy-info.patch
+0009-fix-ceilometer-stack.patch
