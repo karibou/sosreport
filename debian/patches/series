@@ -7,3 +7,4 @@
 0007-Collect-upstart-logs.patch
 0008-Collect-squid-deb-proxy-info.patch
 0009-fix-ceilometer-stack.patch
+0010-backport-juju-plugin-from-3.2-alpha.patch
