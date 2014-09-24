@@ -1,4 +1,4 @@
-From 846e07a27edc47a6d200b206f055f67660d390c5 Mon Sep 17 00:00:00 2001
+From 9c26dba787a79918ccfcd5ad4158110e8dfd66d9 Mon Sep 17 00:00:00 2001
 From: Louis Bouchard <louis.bouchard@canonical.com>
 Date: Wed, 27 Aug 2014 16:07:39 +0200
 Subject: fix pysix issue for precise
@@ -8,24 +8,13 @@ in precise. Fix accordingly so it builds correctly
 
 Signed-off-by: Louis Bouchard <louis.bouchard@canonical.com>
 ---
- Makefile                 | 2 +-
  sos/plugins/emc.py       | 2 +-
  sos/policies/__init__.py | 9 +++++++--
  sos/sosreport.py         | 2 +-
  tests/archive_tests.py   | 2 +-
  tests/plugin_tests.py    | 8 +++++---
- 6 files changed, 16 insertions(+), 9 deletions(-)
+ 5 files changed, 15 insertions(+), 8 deletions(-)
 
-diff --git a/Makefile b/Makefile
-index 92e3117..7d8b733 100644
---- a/Makefile
-+++ b/Makefile
-@@ -83,4 +83,4 @@ po: clean
- 	cp $(PO_DIR)/sos_en.properties $(PO_DIR)/sos.properties
- 
- test:
--	nosetests -v --with-cover --cover-package=sos --cover-html
-+	nosetests3 -v --with-cover --cover-package=sos --cover-html
 diff --git a/sos/plugins/emc.py b/sos/plugins/emc.py
 index 6eac7d0..fa58cfc 100644
 --- a/sos/plugins/emc.py
