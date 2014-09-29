@@ -1,0 +1,41 @@
+From 3b93e135cfe9a6989930fd8aa11e34d9c326f243 Mon Sep 17 00:00:00 2001
+From: Louis Bouchard <louis.bouchard@canonical.com>
+Date: Mon, 29 Sep 2014 10:48:47 +0200
+Subject: Fix upstream code so it runs in a py2 only environment
+
+Signed-off-by: Louis Bouchard <louis.bouchard@canonical.com>
+---
+ Makefile              | 2 +-
+ tests/plugin_tests.py | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 7d8b733..92e3117 100644
+--- a/Makefile
++++ b/Makefile
+@@ -83,4 +83,4 @@ po: clean
+ 	cp $(PO_DIR)/sos_en.properties $(PO_DIR)/sos.properties
+ 
+ test:
+-	nosetests3 -v --with-cover --cover-package=sos --cover-html
++	nosetests -v --with-cover --cover-package=sos --cover-html
+diff --git a/tests/plugin_tests.py b/tests/plugin_tests.py
+index c6f7ccf..0dce390 100644
+--- a/tests/plugin_tests.py
++++ b/tests/plugin_tests.py
+@@ -100,13 +100,13 @@ class PluginToolTests(unittest.TestCase):
+ 
+     def test_regex_findall(self):
+         test_s = "\n".join(['this is only a test', 'there are only two lines'])
+-        test_fo = StringIO(test_s)
++        test_fo = StringIO(six.u(test_s))
+         matches = regex_findall(r".*lines$", test_fo)
+         self.assertEquals(matches, ['there are only two lines'])
+ 
+     def test_regex_findall_miss(self):
+         test_s = "\n".join(['this is only a test', 'there are only two lines'])
+-        test_fo = StringIO(test_s)
++        test_fo = StringIO(six.u(test_s))
+         matches = regex_findall(r".*not_there$", test_fo)
+         self.assertEquals(matches, [])
+ 
