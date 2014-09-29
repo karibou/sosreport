@@ -15,26 +15,6 @@
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 from sos.plugins import Plugin, UbuntuPlugin
-from json import loads as json_load
-
-
-def ensure_service_is_running(service):
-    def wrapper(callback):
-        def wrapped_f(self, *args, **kwargs):
-            try:
-                result = self.call_ext_prog("service {0} stop".format(service))
-                if result["status"] != 0:
-                    raise Exception("Cannot stop {0} service".format(service))
-                callback(self, *args, **kwargs)
-            except Exception as ex:
-                self._log_error("Cannot stop {0}, exception: {1}".format(
-                    service,
-                    ex.message))
-            finally:
-                self.call_ext_prog("service {0} start".format(service))
-        return wrapped_f
-    return wrapper
-
 
 class Juju(Plugin, UbuntuPlugin):
     """ Juju Plugin
@@ -42,47 +22,9 @@ class Juju(Plugin, UbuntuPlugin):
 
     plugin_name = 'juju'
 
-    option_list = [
-        ('export-mongodb',
-         'Export mongodb collections as json files', '', False),
-    ]
-
-    def get_deployed_services(self):
-        return json_load(
-            self.call_ext_prog(
-                "juju status --format json")[1])['services'].keys()
-
-    @ensure_service_is_running("juju-db")
-    def export_mongodb(self):
-        collections = (
-            "relations",
-            "environments",
-            "linkednetworks",
-            "system",
-            "settings",
-        )
-
-        for collection in collections:
-            self.add_cmd_output(
-                "/usr/lib/juju/bin/mongoexport --ssl \
-                --dbpath=/var/lib/juju/db --db juju --collection {0} \
-                --jsonArray".format(collection),
-                suggest_filename="{}.json".format(collection))
-
     def setup(self):
-        self.add_copy_specs([
-            "/var/log/juju",
-            "/var/lib/juju"
-        ])
+        self.add_copy_specs(["/var/log/juju",
+                           "/var/lib/juju"])
 
         self.add_cmd_output("juju -v status")
         self.add_cmd_output("juju -v get-constraints")
-
-        for service in self.get_deployed_services():
-            self.add_cmd_output("juju get {}".format(service))
-
-        if self.get_option("export-mongodb"):
-            self.export_mongodb()
-
-
-# vim: et ts=4 sw=4
