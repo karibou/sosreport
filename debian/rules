@@ -3,10 +3,10 @@
 DH_ALWAYS_EXCLUDE=.git
 
 %:
-	dh $@
+	dh $@ --with python2
 
 override_dh_auto_install:
-	python3 setup.py \
+	python setup.py \
 	install \
 	--install-lib=usr/share/sosreport/ \
 	--install-data=usr/ \
@@ -18,3 +18,4 @@ override_dh_clean:
 	rm -rf build/
 	rm -rf dist/
 	find . -name '*.pyc' -delete
+
