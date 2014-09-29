@@ -49,6 +49,10 @@ if six.PY3:
 else:
     from ConfigParser import ConfigParser
 from six import print_
+try:
+    input = raw_input
+except NameError:
+    pass
 
 # file system errors that should terminate a run
 fatal_fs_errors = (errno.ENOSPC, errno.EROFS)
