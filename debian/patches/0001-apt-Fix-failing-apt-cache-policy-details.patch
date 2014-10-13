@@ -1,0 +1,53 @@
+From 87869620bc3f95100a0455d651507b7ede0b14a2 Mon Sep 17 00:00:00 2001
+From: Louis Bouchard <louis.bouchard@canonical.com>
+Date: Thu, 2 Oct 2014 17:41:48 +0200
+Subject: [apt] Fix failing apt-cache policy details
+
+Split add_cmd_output to use suggest_filename since the
+output of apt-cache policy for each installed package
+would create an incredibly long filename.
+
+Fixes #415.
+
+cherry picked from commit b0938e14eedd33c5c82d9d745310792d4a249c72
+
+Author: Louis Bouchard <louis.bouchard@canonical.com>
+Bug: https://github.com/sosreport/sos/issues/415
+
+Signed-off-by: Louis Bouchard <louis.bouchard@canonical.com>
+---
+ sos/plugins/apt.py | 17 ++++++++++-------
+ 1 file changed, 10 insertions(+), 7 deletions(-)
+
+diff --git a/sos/plugins/apt.py b/sos/plugins/apt.py
+index 091d30f..bd0b336 100644
+--- a/sos/plugins/apt.py
++++ b/sos/plugins/apt.py
+@@ -29,17 +29,20 @@ class Apt(Plugin, DebianPlugin, UbuntuPlugin):
+             "/etc/apt", "/var/log/apt"
+         ])
+ 
+-        dpkg_result = self.call_ext_prog(
+-            "dpkg-query -W -f='${binary:Package}\t${status}\n'")
+-        dpkg_output = dpkg_result['output'].splitlines()
+-        pkg_list = ' '.join(
+-            [v.split('\t')[0] for v in dpkg_output if 'ok installed' in v])
+         self.add_cmd_output([
+             "apt-get check",
+             "apt-config dump",
+             "apt-cache stats",
+-            "apt-cache policy",
+-            "apt-cache policy {}".format(pkg_list)
++            "apt-cache policy"
+         ])
++        dpkg_result = self.call_ext_prog(
++            "dpkg-query -W -f='${binary:Package}\t${status}\n'")
++        dpkg_output = dpkg_result['output'].splitlines()
++        pkg_list = ' '.join(
++            [v.split('\t')[0] for v in dpkg_output if 'ok installed' in v])
++        self.add_cmd_output(
++            "apt-cache policy {}".format(pkg_list),
++            suggest_filename="apt-cache_policy_details"
++        )
+ 
+ # vim: et ts=4 sw=4
