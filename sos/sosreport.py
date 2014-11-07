@@ -59,6 +59,10 @@ if six.PY3:
 else:
     from ConfigParser import ConfigParser
 from six import print_
+try:
+    input = raw_input
+except NameError:
+    pass
 
 
 class TempFileUtil(object):
