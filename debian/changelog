@@ -1,3 +1,10 @@
+sosreport (3.1-1ubuntu3.12.04.3) precise; urgency=medium
+
+  * Fix interactive prompt problem after move to python-six
+    Supplementary fix to LP: #1373451
+
+ -- Louis Bouchard <louis.bouchard@ubuntu.com>  Fri, 07 Nov 2014 18:29:36 +0100
+
 sosreport (3.1-1ubuntu3.12.04.2) precise; urgency=medium
 
   * Fix so sosreport can run in a Python2 only environment
