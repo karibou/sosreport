@@ -1,3 +1,10 @@
+sosreport (3.1-1ubuntu3.12.04.2) precise; urgency=medium
+
+  * Fix so sosreport can run in a Python2 only environment
+    LP: #1373451
+
+ -- Louis Bouchard <louis.bouchard@ubuntu.com>  Fri, 07 Nov 2014 17:39:56 +0100
+
 sosreport (3.1-1ubuntu3.12.04.1) precise; urgency=medium
 
   * Adapt code for correct build on Precise
