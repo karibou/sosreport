@@ -1,0 +1,31 @@
+From 37f4a81d56cfd5e78a771068b299196990aefafb Mon Sep 17 00:00:00 2001
+From: Louis Bouchard <louis.bouchard@canonical.com>
+Date: Fri, 7 Nov 2014 18:19:54 +0100
+Subject: Fix interactive prompt problem after move to python-six
+
+The previous fix was also required for that file. Adding.
+LP: 1373451
+
+Author: Louis Bouchard <louis.bouchard@canonical.com>
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/1373451
+
+Signed-off-by: Louis Bouchard <louis.bouchard@canonical.com>
+---
+ sos/sosreport.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/sos/sosreport.py b/sos/sosreport.py
+index cd5e3f5..710ed80 100644
+--- a/sos/sosreport.py
++++ b/sos/sosreport.py
+@@ -59,6 +59,10 @@ if six.PY3:
+ else:
+     from ConfigParser import ConfigParser
+ from six import print_
++try:
++    input = raw_input
++except NameError:
++    pass
+ 
+ 
+ class TempFileUtil(object):

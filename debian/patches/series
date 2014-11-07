@@ -8,3 +8,4 @@
 0008-Collect-squid-deb-proxy-info.patch
 0009-fix-ceilometer-stack.patch
 0010-Fix-upstream-code-so-it-runs-in-a-py2-only-environme.patch
+0011-Fix-interactive-prompt-problem-after-move-to-python-.patch
