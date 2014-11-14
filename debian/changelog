@@ -1,3 +1,10 @@
+sosreport (3.2-2) unstable; urgency=medium
+
+  * fix archive permissions regression
+    Closes: #769521
+
+ -- Louis Bouchard <louis.bouchard@ubuntu.com>  Fri, 14 Nov 2014 10:55:34 +0100
+
 sosreport (3.2-1) unstable; urgency=medium
 
   * Profiles for plugin selection
