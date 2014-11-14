@@ -1,4 +1,4 @@
-From e6d18564946c49e02adc9f663ce66b1e18f82283 Mon Sep 17 00:00:00 2001
+From 538154703bd35f79e195400f50831288c022b212 Mon Sep 17 00:00:00 2001
 From: "Bryn M. Reeves" <bmr@redhat.com>
 Date: Thu, 30 Oct 2014 16:46:01 +0000
 Subject: [sosreport] fix archive permissions regression
@@ -7,6 +7,8 @@ Restore the umask save/restore around archive creation and ensure
 the effective umask is 077 at the time of archive creation.
 
 Fixes #425.
+Author: Bryn M. Reeves <bmr@redhat.com>
+Bug: https://github.com/sosreport/sos/issues/425
 
 Signed-off-by: Bryn M. Reeves <bmr@redhat.com>
 ---
