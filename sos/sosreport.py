@@ -53,7 +53,7 @@ from sos.reporting import Report, Section, Command, CopiedFile, CreatedFile, Ale
 
 # PYCOMPAT
 import six
-from six.moves import zip
+from six.moves import zip, input
 if six.PY3:
     from configparser import ConfigParser
 else:
@@ -659,6 +659,7 @@ class SoSReport(object):
                 flog.setLevel(logging.DEBUG)
             elif self.opts.verbosity and self.opts.verbosity > 0:
                 console.setLevel(logging.INFO)
+                flog.setLevel(logging.DEBUG)
             else:
                 console.setLevel(logging.WARNING)
             self.soslog.addHandler(console)
@@ -923,7 +924,7 @@ class SoSReport(object):
             msg = self.policy.get_msg()
             msg += _("Press ENTER to continue, or CTRL-C to quit.\n")
             try:
-                raw_input(msg)
+                input(msg)
             except:
                 self.ui_log.info("")
                 self._exit()

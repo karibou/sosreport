@@ -1,4 +1,37 @@
-sosreport (3.1-1) unstable; urgency=low
+sosreport (3.1-1ubuntu2.1) trusty-proposed; urgency=medium
+
+  * debian/patches/add-rabbitmq-plugin.patch
+   - Add rabbitmq log collection (LP: #1308232)
+
+  * debian/patches/collect_upstart_log.patch
+    - Collect upstart log files (LP: #1309679)
+
+  * debian/patches/collect-squid-deb-proxy-info.patch
+    - Collect squid-deb-proxy info (LP: #1311131)
+
+  * debian/patches/fix-ceilometer-stack.patch
+    - Remove error in execution of the ceilometer plugin
+    (LP: #1355279)
+
+ -- Louis Bouchard <louis.bouchard@ubuntu.com>  Wed, 24 Sep 2014 09:48:59 +0200
+
+sosreport (3.1-1ubuntu2) trusty; urgency=medium
+
+  * Fix spurious "command not found" messages when running (LP: #1303745)
+  * Add collection of /var/log/cloud-init*.log files (LP: #1301819)
+  * Add collection of configuration files in /etc/network/interfaces.d (LP: #1303723)
+
+ -- Louis Bouchard <louis.bouchard@ubuntu.com>  Tue, 08 Apr 2014 08:58:08 -0500
+
+sosreport (3.1-1ubuntu1) trusty; urgency=low
+
+  * Fix issues with using sosreport -a. (LP: #1302808) 
+  * Don't collect cobbler isos. (LP: #1302837)
+  * Update standards version.
+
+ -- Chris J Arges <chris.j.arges@ubuntu.com>  Fri, 04 Apr 2014 15:40:13 -0500
+
+sosreport (3.1-1) sid; urgency=low
 
   * New upstream release v3.1
     Features include:
