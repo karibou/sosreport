@@ -1,0 +1,51 @@
+From 22b164b97329c7f1f050b689d06414dc6766c1e6 Mon Sep 17 00:00:00 2001
+From: Louis Bouchard <louis.bouchard@canonical.com>
+Date: Thu, 28 Aug 2014 12:40:23 +0200
+Subject: Add rabbitmq log collection
+
+Description: Add rabbitmq log collection
+
+Author: Louis Bouchard <louis.bouchard@canonical.com>
+Bug-Ubuntu: http://bugs.launchpad.net/bugs/1308232
+Origin: upstream, https://github.com/sosreport/sos/commit/32baa50081bf72d3766f22f27974563f8cad49eb
+---
+ sos/plugins/rabbitmq.py | 30 ++++++++++++++++++++++++++++++
+ 1 file changed, 30 insertions(+)
+ create mode 100644 sos/plugins/rabbitmq.py
+
+diff --git a/sos/plugins/rabbitmq.py b/sos/plugins/rabbitmq.py
+new file mode 100644
+index 0000000..28465de
+--- /dev/null
++++ b/sos/plugins/rabbitmq.py
+@@ -0,0 +1,30 @@
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 2 of the License, or
++# (at your option) any later version.
++
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++
++# You should have received a copy of the GNU General Public License
++# along with this program; if not, write to the Free Software
++# Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
++
++from sos.plugins import Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin
++
++
++class RabbitMQ(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
++    """rabbitmq related information
++    """
++    plugin_name = 'rabbitmq'
++    files = ('/etc/rabbitmq/rabbitmq.conf',)
++    packages = ('rabbitmq-server',)
++
++    def setup(self):
++        self.add_cmd_output("rabbitmqctl report")
++        self.add_copy_spec("/etc/rabbitmq/*")
++        self.add_copy_spec_limit("/var/log/rabbitmq/*",
++                                 sizelimit=self.get_option('log_size'))
++# vim: et ts=4 sw=4

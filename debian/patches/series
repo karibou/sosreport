@@ -1,0 +1,9 @@
+0001-Use-input-method-from-python-six.patch
+0002-do_not_collect_isos_in_cobbler_plugin.patch
+0003-collect-cloud-init-log.patch
+0004-fix-command-not-found.patch
+0005-get-interfaces.d.patch
+0006-Add-rabbitmq-log-collection.patch
+0007-Collect-upstart-logs.patch
+0008-Collect-squid-deb-proxy-info.patch
+0009-fix-ceilometer-stack.patch
