@@ -1,4 +1,4 @@
-From 22b164b97329c7f1f050b689d06414dc6766c1e6 Mon Sep 17 00:00:00 2001
+From ad203af01153ca322f1d16ca0f8f0ae787b4bb4b Mon Sep 17 00:00:00 2001
 From: Louis Bouchard <louis.bouchard@canonical.com>
 Date: Thu, 28 Aug 2014 12:40:23 +0200
 Subject: Add rabbitmq log collection

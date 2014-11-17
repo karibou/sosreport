@@ -1,4 +1,4 @@
-From e19884c7d5f945a800f2d457b20084181614e5c3 Mon Sep 17 00:00:00 2001
+From fc32d8bc93308c75dedbc4b865cb12fd5dd69a5d Mon Sep 17 00:00:00 2001
 From: Louis Bouchard <louis.bouchard@canonical.com>
 Date: Wed, 27 Aug 2014 15:00:55 +0200
 Subject: Use input method from python six

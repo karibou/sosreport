@@ -1,4 +1,4 @@
-From 4263b493459c59b0a7a886a640d87ceace3c052b Mon Sep 17 00:00:00 2001
+From b90b359fc64ec65ddd2e4a844b21d48a37ce585f Mon Sep 17 00:00:00 2001
 From: Louis Bouchard <louis.bouchard@canonical.com>
 Date: Wed, 27 Aug 2014 15:00:58 +0200
 Subject: fix-command-not-found

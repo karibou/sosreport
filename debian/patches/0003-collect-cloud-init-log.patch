@@ -1,4 +1,4 @@
-From f05fa684f9f90a3069dd47268ab5d2708e3d66b4 Mon Sep 17 00:00:00 2001
+From c9a952890e96e50ec8d004ee7681aa932bd24db8 Mon Sep 17 00:00:00 2001
 From: Louis Bouchard <louis.bouchard@canonical.com>
 Date: Wed, 27 Aug 2014 15:00:57 +0200
 Subject: collect-cloud-init-log

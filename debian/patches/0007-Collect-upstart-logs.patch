@@ -1,4 +1,4 @@
-From 7b941c76f289595936c33e5f69d0c1191987dd3f Mon Sep 17 00:00:00 2001
+From 54123a79217ad50844bf8826e5780960306f5f2e Mon Sep 17 00:00:00 2001
 From: Louis Bouchard <louis.bouchard@canonical.com>
 Date: Thu, 28 Aug 2014 12:41:32 +0200
 Subject: Collect upstart logs

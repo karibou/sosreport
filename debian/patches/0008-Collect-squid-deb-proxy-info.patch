@@ -1,4 +1,4 @@
-From ac71ef2cdbdc24d3f8594c50a11653b1a5e43d3d Mon Sep 17 00:00:00 2001
+From 72d0e2e277a4b5f34a8c4d7ae6206ab1bb1bea25 Mon Sep 17 00:00:00 2001
 From: Louis Bouchard <louis.bouchard@canonical.com>
 Date: Thu, 28 Aug 2014 12:42:01 +0200
 Subject: Collect squid-deb-proxy info

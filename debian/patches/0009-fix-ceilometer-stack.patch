@@ -1,4 +1,4 @@
-From 8c1c48d30d8508d23f06db10ec1c9ece989133f9 Mon Sep 17 00:00:00 2001
+From 6903abd9814d99d07045dc73237015ecb179b369 Mon Sep 17 00:00:00 2001
 From: Louis Bouchard <louis.bouchard@canonical.com>
 Date: Thu, 28 Aug 2014 10:06:31 +0200
 Subject: fix ceilometer stack

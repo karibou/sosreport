@@ -1,4 +1,4 @@
-From e6b8f03b5fbe7f456c95a18b714e7b90fcf38198 Mon Sep 17 00:00:00 2001
+From 2fa7f3840155ec1c6d2738d66a353837d92f16f7 Mon Sep 17 00:00:00 2001
 From: Louis Bouchard <louis.bouchard@canonical.com>
 Date: Wed, 27 Aug 2014 15:00:56 +0200
 Subject: do_not_collect_isos_in_cobbler_plugin
