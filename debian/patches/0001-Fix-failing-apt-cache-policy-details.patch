@@ -1,7 +1,7 @@
-From 87869620bc3f95100a0455d651507b7ede0b14a2 Mon Sep 17 00:00:00 2001
+From 964254432070bef0a5846fd589edc0301340ae50 Mon Sep 17 00:00:00 2001
 From: Louis Bouchard <louis.bouchard@canonical.com>
 Date: Thu, 2 Oct 2014 17:41:48 +0200
-Subject: [apt] Fix failing apt-cache policy details
+Subject: Fix failing apt-cache policy details
 
 Split add_cmd_output to use suggest_filename since the
 output of apt-cache policy for each installed package
