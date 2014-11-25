@@ -1,2 +1,3 @@
 0001-Fix-failing-apt-cache-policy-details.patch
 0002-fix-archive-permissions-regression.patch
+0003-Fix-upstream-code-so-it-runs-in-a-py2-only-environme.patch
