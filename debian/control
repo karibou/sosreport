@@ -1,8 +1,9 @@
 Source: sosreport
-Maintainer: Adam Stokes <adam.stokes@ubuntu.com>
+Maintainer: Louis Bouchard <louis.bouchard@ubuntu.com>
+Uploaders: Adam Stokes <adam.stokes@ubuntu.com>
 Section: admin
 Priority: optional
-Standards-Version: 3.9.4
+Standards-Version: 3.9.5
 Build-Depends: debhelper (>= 9), dh-python, python3-all, gettext, python3-nose, python3-six
 Homepage: https://github.com/sosreport/sos
 X-Python3-Version: >= 3.3
