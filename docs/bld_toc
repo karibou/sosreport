@@ -1,0 +1,51 @@
+#!/usr/bin/python3
+
+import sys
+import os
+import time
+
+index_header="""
+.. {} documentation master file, created by
+   bld_doc on {}.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to {}'s documentation!
+===========================================================
+
+Contents:
+
+.. toctree::
+   :maxdepth: 2
+"""
+
+index_tail="""
+
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+"""
+
+date = time.asctime()
+
+def build_toc(title):
+    with open("doc/source/index.rst", 'w') as index:
+        index.write(index_header.format(title, date, title))
+        with open("sos_reports/sos.txt", 'r') as report:
+            for line in report:
+                if line[0].isalpha():
+                    index.write("    {}".format(line))
+        index.write(index_tail)
+
+if __name__ == '__main__':
+    try:
+        title = sys.argv[1].split("/")
+        build_toc(title[-1])
+    except IndexError:
+        print("Error : need sosreport name as first argument")
+        exit(1)
