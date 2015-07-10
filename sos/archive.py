@@ -33,6 +33,7 @@ try:
 except ImportError:
     pass
 
+
 # PYCOMPAT
 import six
 if six.PY3:
@@ -388,7 +389,28 @@ class TarFileArchive(FileCacheArchive):
                 filter=self.copy_permissions_filter)
         tar.close()
         if self._encrypt_key is not None:
-            pass
+            try:
+                import gpgme
+            except ImportError:
+                self.log_error("No gpgme library available. --encrypt ignored")
+                return
+            Context = gpgme.Context()
+            Context.armor = False   # Make encryption binary
+            try:
+                key = Context.get_key(self._encrypt_key)
+                if not key.revoked:
+                    with open(self._archive_name, mode="rb") as tarball:
+                        with open("{}.gpg".format(self._archive_name),
+                                  mode="wb") as encrypted:
+                            Context.encrypt([key], gpgme.ENCRYPT_ALWAYS_TRUST,
+                                            tarball, encrypted)
+            except gpgme.GpgmeError as Err:
+                if Err[2].find("End of file") != -1:
+                    self.log_error("Unable to encrypt  - %s : Not in keyring"
+                                   % self._encrypt_key)
+                else:
+                    self.log_error("Unable to encrypt  - %s : %s"
+                                   % (self._encrypt_key, Err[2]))
 
     def _compress(self):
         methods = ['xz', 'bzip2', 'gzip']
