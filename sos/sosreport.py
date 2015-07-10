@@ -254,6 +254,7 @@ class SoSOptions(object):
     _sysroot = None
     _chroot = 'auto'
     _compression_type = 'auto'
+    _encrypt_key = ""
 
     _options = None
 
@@ -571,6 +572,17 @@ class SoSOptions(object):
         self._check_options_initialized()
         self._compression_type = value
 
+    @property
+    def encrypt_key(self):
+        if self._options is not None:
+            return self._options.encrypt_key
+        return self.encrypt_key
+
+    @encrypt_key.setter
+    def encrypt_key(self, value):
+        self._check_options_initialized()
+        self._customer_name = value
+
     def _parse_args(self, args):
         """ Parse command line options and arguments"""
 
@@ -659,6 +671,9 @@ class SoSOptions(object):
                           help="compression technology to use [auto, "
                                "gzip, bzip2, xz] (default=auto)",
                           default="auto")
+        parser.add_option("-E", "--encrypt", action="store",
+                          dest="encrypt_key",
+                          help="Encrypt the archive with the provided GPG key")
 
         return parser.parse_args(args)[0]
 
