@@ -52,6 +52,7 @@ class Archive(object):
 
     _name = "unset"
     _debug = False
+    _encrypt_key = None
 
     def _format_msg(self, msg):
         return "[archive:%s] %s" % (self.archive_type(), msg)
@@ -72,6 +73,9 @@ class Archive(object):
         if not self._debug:
             return
         self.log.debug(self._format_msg(msg))
+
+    def set_encrypt_key(self, encrypt_key):
+        self._encrypt_key = encrypt_key
 
     # this is our contract to clients of the Archive class hierarchy.
     # All sub-classes need to implement these methods (or inherit concrete
@@ -383,6 +387,8 @@ class TarFileArchive(FileCacheArchive):
         tar.add(self._archive_root, arcname=os.path.split(self._name)[1],
                 filter=self.copy_permissions_filter)
         tar.close()
+        if self._encrypt_key is not None:
+            pass
 
     def _compress(self):
         methods = ['xz', 'bzip2', 'gzip']

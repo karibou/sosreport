@@ -772,6 +772,8 @@ class SoSReport(object):
             self.archive = auto_archive(archive_name, self.tmpdir)
         else:
             self.archive = TarFileArchive(archive_name, self.tmpdir)
+        if self.opts.encrypt_key is not None:
+            self.archive.set_encrypt_key(self.opts.encrypt_key)
         self.archive.set_debug(True if self.opts.debug else False)
 
     def _make_archive_paths(self):
