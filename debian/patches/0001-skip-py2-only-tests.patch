@@ -1,0 +1,20 @@
+Index: sosreport-3.2+git276-g7da50d6/tests/utilities_tests.py
+===================================================================
+--- sosreport-3.2+git276-g7da50d6.orig/tests/utilities_tests.py	2015-11-25 12:08:17.000000000 +0100
++++ sosreport-3.2+git276-g7da50d6/tests/utilities_tests.py	2015-11-25 15:37:19.703086662 +0100
+@@ -56,6 +56,7 @@
+     def test_exe_file_abs_path(self):
+         self.assertTrue(is_executable("/usr/bin/timeout"))
+ 
++    @unittest.skipIf(six.PY3, "Skipped Python2 only test")
+     def test_output(self):
+         path = os.path.join(TEST_DIR, 'test_exe.py')
+         result = sos_get_command_output(path)
+@@ -75,6 +76,7 @@
+         self.assertEquals(result['status'], 0)
+         self.assertEquals(result['output'].strip(), TEST_DIR)
+ 
++    @unittest.skipIf(six.PY3, "Skipped Python2 only test")
+     def test_shell_out(self):
+         path = os.path.join(TEST_DIR, 'test_exe.py')
+         self.assertEquals("executed\n", shell_out(path))
