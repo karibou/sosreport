@@ -83,6 +83,7 @@ class SosRunTests(unittest.TestCase):
         if self.error_logs:
             print("Execution logs found in sos_logs. Please investigate : %s" %
                   self.error_logs)
+            self._add_artifact(self.error_logs[0])
             raise AssertionError
 
     def test_md5_checksum(self):
