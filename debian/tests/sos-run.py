@@ -41,13 +41,20 @@ class SosRunTests(unittest.TestCase):
 
     @classmethod
     def setUpClass(self):
+        self.artifact_dir = os.environ.get("ADT_ARTIFACTS")
         self.workdir = tempfile.mkdtemp()
         self.run_sosreport()
         self.locate_tarball()
 
+        assert (self.artifact_dir is not None), "ADT_ARTIFACTS undefined"
+
     @classmethod
     def tearDownClass(self):
         shutil.rmtree(self.workdir)
+
+    def _add_artifact(self, artifact):
+        if os.path.exists(artifact):
+            shutil.copy(artifact, self.artifact_dir)
 
     def _test_tarball_presence(self):
         if self.tarball:
