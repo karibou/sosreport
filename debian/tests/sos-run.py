@@ -94,7 +94,13 @@ class SosRunTests(unittest.TestCase):
                   self.workdir, self.tarball + '.md5'), 'r') as md5sum:
             calculated_md5 = md5sum.readline().strip()
 
-        self.assertEqual(checksum, calculated_md5)
+        try:
+            self.assertEqual(checksum, calculated_md5)
+        except AssertionError:
+            self._add_artifact(os.path.join(self.workdir, self.tarball))
+            self._add_artifact(os.path.join(
+                               self.workdir, self.tarball + '.md5'))
+            raise
 
 
 if __name__ == "__main__":
